@@ -35,3 +35,8 @@ p {
     font-size: 20px;
     color: white;
 }
+
+#loading-icon {
+    display: none;
+    width: 60px;
+}

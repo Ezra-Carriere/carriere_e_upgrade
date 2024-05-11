@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+h1 {
+    font-size: 40px;
+    color: red;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 50px;
+    color: red;
+}
+
+p {
+    font-size: 20px;
+    color: red;
+}

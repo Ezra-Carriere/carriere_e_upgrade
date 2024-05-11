@@ -1,6 +1,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    background-color: #B50938;
 }
 
 #aic-img {
@@ -16,21 +17,21 @@ ul {
 
 a {
     text-decoration: none;
-    color: #B50938;
+    color: white;
 }
 
 h1 {
     font-size: 40px;
-    color: #B50938;
+    color: white;
 }
 
 h2 {
     font-size: 30px;
     line-height: 50px;
-    color: #B50938;
+    color: white;
 }
 
 p {
     font-size: 20px;
-    color: #B50938;
+    color: white;
 }

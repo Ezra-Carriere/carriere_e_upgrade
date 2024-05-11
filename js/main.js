@@ -1,13 +1,26 @@
 (() => {
     const artworkBox = document.querySelector("#artwork-box");
     const infoCon = document.querySelector("#info-con");
+    const loadingIcon = document.querySelector("#loading-icon");
     const baseUrl = "https://api.artic.edu/api/v1/artworks";
 
+    function showLoadingIcon() {
+        loadingIcon.style.display = "block";
+    }
+
+    function hideLoadingIcon() {
+        loadingIcon.style.display = "none";
+    }
+
     function fetchArtworks() {
+        showLoadingIcon();
+
         const randomPage = Math.floor(Math.random() * 7) + 1;
         fetch(`${baseUrl}?page=${randomPage}&limit=10`)
             .then(response => response.json())
             .then(function(response) {
+                hideLoadingIcon();
+
                 let artworks = response.data;
                 const ul = document.createElement('ul');
 
@@ -29,6 +42,7 @@
                 });
             })
             .catch(error => {
+                hideLoadingIcon();
                 console.log(error);
             });
     }
@@ -63,7 +77,8 @@
         infoCon.appendChild(title);
         infoCon.appendChild(artist);
         infoCon.appendChild(image);
-        infoCon.appendChild(description);
+
+        infoCon.style.display = 'block';
     }
 
     window.onload = fetchArtworks;

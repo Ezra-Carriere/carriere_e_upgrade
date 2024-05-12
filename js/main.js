@@ -3,6 +3,7 @@
     const infoCon = document.querySelector("#info-con");
     const loadingIcon = document.querySelector("#loading-icon");
     const baseUrl = "https://api.artic.edu/api/v1/artworks";
+    let activeArtworkId = null;
 
     function showLoadingIcon() {
         loadingIcon.style.display = "block";
@@ -32,14 +33,21 @@
                     a.setAttribute('data-artwork-id', artwork.id);
                     li.appendChild(a);
                     ul.appendChild(li);
+
+                    a.addEventListener("click", function(event) {
+                        event.preventDefault();
+                        fetchArtworkDetails(artwork.id);
+                        setActiveArtwork(artwork.id);
+                    });
                 });
 
                 artworkBox.appendChild(ul);
 
-                const links = document.querySelectorAll('#artwork-box li a');
-                links.forEach(link => {
-                    link.addEventListener("click", fetchArtworkFacts);
-                });
+                if (artworks.length > 0) {
+                    const firstArtworkId = artworks[0].id;
+                    fetchArtworkDetails(firstArtworkId);
+                    setActiveArtwork(firstArtworkId);
+                }
             })
             .catch(error => {
                 hideLoadingIcon();
@@ -47,9 +55,7 @@
             });
     }
 
-    function fetchArtworkFacts(event) {
-        event.preventDefault();
-        const artworkId = event.target.getAttribute('data-artwork-id');
+    function fetchArtworkDetails(artworkId) {
         fetch(`${baseUrl}/${artworkId}`)
             .then(response => response.json())
             .then(function(response) {
@@ -79,6 +85,19 @@
         infoCon.appendChild(image);
 
         infoCon.style.display = 'block';
+    }
+
+    function setActiveArtwork(artworkId) {
+        activeArtworkId = artworkId;
+        const links = document.querySelectorAll('#artwork-box li a');
+        links.forEach(link => {
+            const id = link.getAttribute('data-artwork-id');
+            if (id === artworkId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
     }
 
     window.onload = fetchArtworks;

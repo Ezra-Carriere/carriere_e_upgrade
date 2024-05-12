@@ -36,8 +36,9 @@
 
                     a.addEventListener("click", function(event) {
                         event.preventDefault();
-                        fetchArtworkDetails(artwork.id);
-                        setActiveArtwork(artwork.id);
+                        const artworkId = event.target.getAttribute('data-artwork-id');
+                        fetchArtworkDetails(artworkId);
+                        setActiveArtwork(artworkId);
                     });
                 });
 
@@ -93,9 +94,9 @@
         links.forEach(link => {
             const id = link.getAttribute('data-artwork-id');
             if (id === artworkId) {
-                link.classList.add('active');
+                link.parentElement.classList.add('active');
             } else {
-                link.classList.remove('active');
+                link.parentElement.classList.remove('active');
             }
         });
     }

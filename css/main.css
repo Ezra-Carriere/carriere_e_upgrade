@@ -39,6 +39,7 @@ h2 {
 p {
     font-size: 20px;
     color: black;
+    margin-bottom: 30px;
 }
 
 #loading-icon {

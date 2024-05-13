@@ -4,7 +4,6 @@ On this website you'll be able to view and learn about many different art pieces
 
 ## Functionality
 
-Running the Website Locally
 To run this website locally, follow these steps:
 1. Clone this repository to your local machine.
 2. Open the file in your code editor of choice.
